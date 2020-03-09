@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuthServer.Infrastructure\AuthServer.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.435" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="3.1.2" />
+  </ItemGroup>
+  
+  <Target Name="CopySqlite" AfterTargets="AfterBuild">
+    <Copy SourceFiles="..\AuthServer.Infrastructure\AuthServer.ctx" DestinationFolder=".\" />
+  </Target>
+  
+  <Target Name="CopySqliteOnPublish" AfterTargets="Publish">
+    <Copy SourceFiles="..\AuthServer.Infrastructure\AuthServer.ctx" DestinationFolder="$(PublishDir)" />
+  </Target>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Certificates\localhost.pfx" />
+  </ItemGroup>
+  
+</Project>
