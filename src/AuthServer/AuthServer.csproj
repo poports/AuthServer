@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Certificates\localhost.pfx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AuthServer.Infrastructure\AuthServer.Infrastructure.csproj" />
   </ItemGroup>
 
@@ -20,9 +24,5 @@
   <Target Name="CopySqliteOnPublish" AfterTargets="Publish">
     <Copy SourceFiles="..\AuthServer.Infrastructure\AuthServer.ctx" DestinationFolder="$(PublishDir)" />
   </Target>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Certificates\localhost.pfx" />
-  </ItemGroup>
   
 </Project>
