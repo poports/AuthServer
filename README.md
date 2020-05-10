@@ -15,9 +15,7 @@ curl --location --request POST 'https://localhost:5001/api/accounts' \
 }'
 ```
 
-Postman:
- Metod = Post
- Body = raw 
+Postman: Method = POST; Body = raw 
 
 ```
  {
